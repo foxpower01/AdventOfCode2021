@@ -1,6 +1,6 @@
 from os import read
 
-f = open("myInputFile.txt", "r")
+f = open("myInputDay1.txt", "r")
 myInput = []
 listOfSums = []
 counter = 0
