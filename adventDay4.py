@@ -17,9 +17,6 @@ def main():
   listOfCalls = list(map(lambda x: int(x), listOfCalls))
   while gameOver == False:
     for n in range(0, len(listOfCalls)):
-#      print("i", n)
-      if n == 99:
-        print("SHOULD BE DONE")
       for board in listOfBoards:
         board.setBoardState(listOfCalls[n])
         if board.hasWon():
