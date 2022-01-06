@@ -1,35 +1,38 @@
 def main():  
     listOfBoards = []  
     tempData = []
-    gameOver = False
     output = 0
-    f = open("myInputDay4part2.txt", "r")
+    f = open("test.txt", "r")
     for line in f:
         if len(line.split(" ")) > 1:
             tempData.append(list(map(lambda x: int(x), map(lambda jtem: jtem.replace("\n", ""), filter(lambda item: item != "", line.split(" "))))))
-            print(tempData)
         else:
             board = Board(tempData)
             listOfBoards.append(board)
             tempData = []
-    g = open("myInputDay4.txt", "r")
+    print("hi")
+    g = open("test copy.txt", "r")
     listOfCalls = g.readline().split(",")
     listOfCalls = list(map(lambda x: int(x), listOfCalls))
-    while len(listOfBoards) > 1:
-        for n in range(0, len(listOfCalls)):
-            while len(listOfBoards) > 1:
-                for board in listOfBoards:
-                    board.setBoardState(listOfCalls[n])
-                    if board.hasWon():
-                        listOfBoards.remove(board)
-                        print(len(listOfBoards))
-        for row in listOfBoards[0].getBoardState(): 
-            for row in board.getBoardState():
-                for item in row:
-                    if item > -1:
-                        output += item
-            print("output", output * listOfCalls[n])
-            exit()
+    for n in range(0, len(listOfCalls)):
+        print(n)
+        if len(listOfBoards) > 1:
+            for i in range(0, len(listOfBoards)):
+                listOfBoards[i].setBoardState(listOfCalls[n])
+                if listOfBoards[i].hasWon():
+                    listOfBoards.pop(i)
+                    print(len(listOfBoards))
+        else:
+            break
+    for row in listOfBoards[0].getBoardState(): 
+        for row in board.getBoardState():
+            for item in row:
+                if item > -1:
+                    print(item)
+                    output += item
+        print(output)
+        print("output", output * listOfCalls[n])
+        exit()
     
 class Board(object):
     boardState = []
