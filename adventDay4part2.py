@@ -2,7 +2,7 @@ def main():
     listOfBoards = []  
     tempData = []
     output = 0
-    f = open("test.txt", "r")
+    f = open("myInputDay4part2.txt", "r")
     for line in f:
         if len(line.split(" ")) > 1:
             tempData.append(list(map(lambda x: int(x), map(lambda jtem: jtem.replace("\n", ""), filter(lambda item: item != "", line.split(" "))))))
@@ -11,28 +11,41 @@ def main():
             listOfBoards.append(board)
             tempData = []
     print("hi")
-    g = open("test copy.txt", "r")
+    g = open("myInputDay4.txt", "r")
     listOfCalls = g.readline().split(",")
     listOfCalls = list(map(lambda x: int(x), listOfCalls))
     for n in range(0, len(listOfCalls)):
         print(n)
+        j = 0
         if len(listOfBoards) > 1:
+#            for eaBoard in listOfBoards:
+ #               eaBoard.setBoardState(listOfCalls[n])
+  #              if eaBoard.hasWon:
+   #                 listOfBoards.remove(eaBoard)
             for i in range(0, len(listOfBoards)):
+                i = i - j
+                print("I", i)
                 listOfBoards[i].setBoardState(listOfCalls[n])
                 if listOfBoards[i].hasWon():
                     listOfBoards.pop(i)
-                    print(len(listOfBoards))
+                    j += 1
+                    print("len", len(listOfBoards))
         else:
-            break
+            listOfBoards[0].setBoardState(listOfCalls[n])
+            if listOfBoards[0].hasWon():
+                print("hi")
+                break
     for row in listOfBoards[0].getBoardState(): 
-        for row in board.getBoardState():
-            for item in row:
-                if item > -1:
-                    print(item)
-                    output += item
-        print(output)
-        print("output", output * listOfCalls[n])
-        exit()
+        print(row)
+    for row in listOfBoards[0].getBoardState(): 
+#        for row in board.getBoardState():
+        for item in row:
+            if item > -1:
+                print(item)
+                output += item
+    print(output)
+    print("output", output * listOfCalls[n])
+    exit()
     
 class Board(object):
     boardState = []
