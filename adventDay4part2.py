@@ -18,10 +18,6 @@ def main():
         print(n)
         j = 0
         if len(listOfBoards) > 1:
-#            for eaBoard in listOfBoards:
- #               eaBoard.setBoardState(listOfCalls[n])
-  #              if eaBoard.hasWon:
-   #                 listOfBoards.remove(eaBoard)
             for i in range(0, len(listOfBoards)):
                 i = i - j
                 print("I", i)
@@ -38,7 +34,6 @@ def main():
     for row in listOfBoards[0].getBoardState(): 
         print(row)
     for row in listOfBoards[0].getBoardState(): 
-#        for row in board.getBoardState():
         for item in row:
             if item > -1:
                 print(item)
