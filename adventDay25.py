@@ -1,3 +1,6 @@
+from math import factorial
+
+
 numberOfSteps = 0
 hasStepped = True
 f = open("test.txt", "r")
@@ -38,7 +41,8 @@ def step(boardstate):
                     boardstate[i][j] = "."
                     boardstate[i][j + 1] = "e"
                     hasStepped = True
-                    print("moved East")
+                   # print("moved East")
+    print(boardstate)
     for i in range(len(boardstate)):
         for j in range(len(boardstate[i])):
             if boardstate[i][j] == "v":
@@ -53,6 +57,7 @@ def step(boardstate):
                         boardstate[i + 1][j] = "s"
                         hasStepped = True
                        # print("moved south")
+    print(boardstate)
     for line in boardstate:
         for k in range(len(line)):
             if line[k] == "e":
@@ -62,12 +67,11 @@ def step(boardstate):
     #print(boardstate)
     return(boardstate)
 
-#while hasStepped == True:
-for i in range(59):
+while hasStepped == True:
+#for i in range(5):
     numberOfSteps += 1
     boardstateIn = step(boardstateIn)
     print(boardstateIn)
     print(hasStepped)
 print(numberOfSteps)
-
 #print(step(boardstateIn))
